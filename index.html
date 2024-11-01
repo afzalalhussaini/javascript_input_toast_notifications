@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        .body{
+            font-family:  '-apple-system', 'BlinkMacSystemFont', "segoe ui", 'Roboto', "helvetica neue", Arial, "noto sans", sans-serif, "apple color emoji", "segoe ui emoji", "segoe ui symbol", "noto color emoji";
+        }
+      .toaster_div{
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            /* margin-left: 10%; */
+            /* border: double; */
+            position: relative;
+
+        }
+        .toaster_mid{
+            width: 80%;
+            height: 100%;
+            display: flex;
+            
+            /* border: 1px solid #d81717; */
+            /* background-color: #0717ff; */
+        }
+        .parent{
+        width: 300px;
+        position: absolute;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+        .toaster_box1{
+            width: 30%;
+            height: 90%;
+            display: flex;
+            /* gap: 5px; */
+            padding: 20px;
+            flex-direction: column;
+           border-radius: 5px;
+            background-color: #000;
+            color: #fff;
+            margin-left: 20%;
+        }
+        .imputbox{
+            width: 250px;
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+            padding: 8px;
+            border: 1px solid #000;
+            /* background-color: #0717ff; */
+        }
+        .message{
+            width: 250px;
+            height: 100px;
+            border-radius: 5px;
+            border: none;
+            padding: 8px;
+
+            border: 1px solid #000;
+        }
+        .toaster_box2{
+            width: 40%;
+            height: 95%;
+            gap: 5px;
+            padding: 10px;
+            display: flex;
+            margin-left: 20px;
+          background-color: #000;
+          color: #fff;
+            flex-direction: column;
+            border-radius: 5px;
+            /* border: 1px solid #000; */
+        }
+        .button_radio_div{
+            width: 100%;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            /* flex-direction: column; */
+            /* border: 1px solid #000; */
+        }
+        .button_radio_div p{
+            font-size: 16px;
+            padding: 10px;
+            /* text-align: center;      */
+        }
+        .radio_1{
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        .toaster_box3{
+            width: 30%;
+            height: 95%;
+            gap: 5px;
+            padding: 10px;
+            display: flex;
+           justify-content: flex-end;
+           margin-top: 50%;
+            /* flex-direction: column; */
+            /* border: 1px solid #000; */
+        }
+        .showToast_btn{
+            width: 150px;
+            height: 30px;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            background-color: #000;
+            border: 1px solid #fff;
+            position: absolute;
+            top: 80%;
+            left: 32%;
+            cursor: pointer;
+          
+        }
+        
+       
+        
+        .js_1{
+            width: 400px;
+            height: 100px;
+            margin-top: 10px;
+            margin-left: -18%;
+            color: #fff; 
+            font-size: x-large;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            --color: #0abf30;
+            background-image: 
+                linear-gradient(
+                    to right, #0abf3055, #22242f 30%
+                );
+            animation: show 0.3s ease 1 forwards;
+        }
+        @keyframes show{
+            0%{
+                transform: translateX(100%);
+            }
+            40%{
+                transform: translateX(-5%);
+            }
+            80%{
+                transform: translateX(0%);
+            }
+            100%{
+                transform: translateX(-10%);
+            }
+        }
+        .js_1::before{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: var(--color);
+            width: 100%;
+            height: 3px;
+            content: "";
+            box-shadow: 0 0 10px var(--color);
+            animation: timeOut 3s linear 1 forwards;
+        }
+
+        @keyframes timeOut{
+            to{
+                width: 0;
+            }
+        }
+        .error{
+            --color: #f24d4c;
+            background-image: 
+                linear-gradient(
+                    to right, #f24d4c55, #22242f 30%
+                );
+        }
+        .warning{
+            --color: #e9bd0c;
+            background-image: 
+                linear-gradient(
+                    to right, #e9bd0c55, #22242f 30%
+                );
+        }
+        .info{
+            --color: #3498bd;
+            background-image: 
+                linear-gradient(
+                    to right, #3498bd55, #22242f 30%
+                );
+        }
+        .top_left{
+            margin-left: 8%;
+            left: 0;
+            top: 0;
+        }
+        .top_right{
+            right: 0;
+            top: 0;
+        }
+        .bottom_right{
+            bottom: 0;
+            right: 0;
+        }
+        .bottom_left{
+            margin-left: 8%;
+            bottom: 0;
+            left: 0;
+        }
+        .top_full_width{
+            margin-left: 8%;
+            top: 0;
+            width: 800px;
+        }
+
+       
+
+</style>
+
+<body>
+
+    <div class="toaster_div">
+        <div class="toaster_mid">
+        <div class="parent"></div>
+
+            <div class="toaster_box1">
+            <h4>Toastr Configurator</h4>
+            <p>Title</p>
+            <input class="imputbox" type="text" name="bg" placeholder=" Enter Title Here">
+           
+            <p>Message</p>
+            <textarea class="message" name="" id="" placeholder="Enter Message "></textarea>
+          
+        </div>
+            <div class="toaster_box2">
+                <h3>Toast Type</h3>
+                <div class="button_radio_div">
+                    <input class="radio_1 bg_Get" type="radio" id="sucess" name="bg" >
+                    <p>Sucess</p>  
+                </div>
+                <div class="button_radio_div">
+                    <input class="radio_1 bg_Get" type="radio" id="info" name="bg" >
+                    <p>Info</p>  
+                </div>
+                <div class="button_radio_div">
+                    <input class="radio_1 bg_Get" type="radio" id="warning" name="bg" >
+                    <p>Warning</p>  
+                </div>
+                <div class="button_radio_div">
+                    <input class="radio_1 bg_Get" type="radio" id="error" name="bg" >
+                    <p>Error</p>  
+                </div>
+
+
+                <h3>Position</h3>
+                <div class="button_radio_div">
+                    <input class="radio_1 Position_js" type="radio" id="top_right" name="top">
+                    <p>Top Right</p>  
+                </div>
+                <div class="button_radio_div">
+                    <input class="radio_1 Position_js" type="radio" id="bottom_right" name="top">
+                    <p>Bottom Right </p>  
+                </div>
+                <div class="button_radio_div">
+                    <input class="radio_1 Position_js" type="radio" id="bottom_left" name="top" >
+                    <p>Bottom Left
+                    </p>  
+                </div>
+               
+                <div class="button_radio_div">
+                    <input class="radio_1 Position_js" type="radio" id="top_left" name="top">
+                    <p>Top Left</p>  
+                </div>
+                <div class="button_radio_div">
+                    <input class="radio_1 Position_js" type="radio" id="top_full_width" name="top" >
+                    <p>Top Full Width
+                    </p>  
+                </div>
+                <div class="button_radio_div">
+                    <input class="radio_1 Position_js" type="radio" id="bottom_full_width" name="top">
+                    <p>Bottom Full Width
+                    </p>  
+                </div>
+
+                
+                
+            </div>
+            <div class="toaster_box3">
+                <button class="showToast_btn">Show Toast</button>
+            </div>
+        </div>    
+        </div>
+
+
+
+    <script>
+
+        let btn = document.querySelector(".showToast_btn")
+        let parent1 = document.querySelector(".parent")
+        let name = document.querySelector(".imputbox")
+        let name1 = document.querySelector(".message")
+        let Radio_Btn = document.querySelectorAll(".bg_Get")
+        let Position_js = document.querySelectorAll(".Position_js")
+
+        btn.addEventListener("click",()=>{
+
+            let Get_Value = name.value
+            let Get_Value1 = name1.value
+            
+            let Create_Div = document.createElement("div")
+            Create_Div.classList.add("js_1")
+            parent1.appendChild(Create_Div)
+            let p = document.createElement("div")
+            p.innerHTML = Get_Value
+            Create_Div.appendChild(p)
+
+            let p1 = document.createElement("div")
+            p1.innerHTML = Get_Value1
+            Create_Div.appendChild(p1)
+
+            setTimeout(() => {
+                Create_Div.style.display = "none"
+            }, 3000);
+
+            Radio_Btn.forEach((elem,index)=>{
+                if(elem.checked == true){
+                    let bgk = elem.id  
+                    Create_Div.classList.add(bgk)
+                    // console.log(Create_Div);
+                }
+                
+            })
+            Position_js.forEach((ele)=>{
+                if(ele.checked == true){
+                    let getid =ele.id
+                    parent1.classList.add(getid)
+                    // console.log(parent1);
+                    
+
+                }
+            })
+        })
+
+
+
+
+    </script>
+</body>
+</html>
